@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/jubileemap"
+    tools:context=".JubileeLineActivity">
+
+
+    <Button
+        android:id="@+id/canonsparkButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="13dp"
+        android:text="Canons Park"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/kingsburyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/queensburyButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/kingsburyButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="13dp"
+        android:text="Kingsbury"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/neasdenButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wembleyparkButton"
+        app:layout_constraintTop_toBottomOf="@+id/canonsparkButton" />
+
+    <Button
+        android:id="@+id/neasdenButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="17dp"
+        android:text="Neasden"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/willesdengreenButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dollishillButton"
+        app:layout_constraintTop_toBottomOf="@+id/kingsburyButton" />
+
+    <Button
+        android:id="@+id/westhampsteadButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="17dp"
+        android:text="Westhampstead"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@+id/swisscottageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/finchleyroadButton"
+        app:layout_constraintTop_toBottomOf="@+id/willesdengreenButton" />
+
+    <Button
+        android:id="@+id/willesdengreenButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="21dp"
+        android:text="Willesden Green"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/westhampsteadButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/kilsburnButton"
+        app:layout_constraintTop_toBottomOf="@+id/neasdenButton" />
+
+    <Button
+        android:id="@+id/swisscottageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="21dp"
+        android:text="Swiss cottage"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/bakerstreetButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stjohnswoodButton"
+        app:layout_constraintTop_toBottomOf="@+id/westhampsteadButton" />
+
+    <Button
+        android:id="@+id/bakerstreetButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="17dp"
+        android:text="Baker Street"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/greenparkButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bondstreetButton"
+        app:layout_constraintTop_toBottomOf="@+id/swisscottageButton" />
+
+    <Button
+        android:id="@+id/greenparkButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="13dp"
+        android:text="Greenpark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/waterlooButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/westminsterButton"
+        app:layout_constraintTop_toBottomOf="@+id/bakerstreetButton" />
+
+    <Button
+        android:id="@+id/westhamButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="38dp"
+        android:text="West Ham"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/canningtownButton"
+        app:layout_constraintTop_toBottomOf="@+id/northgreenwichButton" />
+
+    <Button
+        android:id="@+id/canningtownButton2"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="Canning Town"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/canningtownButton"
+        app:layout_constraintEnd_toEndOf="@+id/canningtownButton"
+        app:layout_constraintStart_toStartOf="@+id/canningtownButton" />
+
+    <Button
+        android:id="@+id/stratfordButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="16dp"
+        android:text="Stratford"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/westhamButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/canningtownButton" />
+
+    <Button
+        android:id="@+id/canadawaterButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="15dp"
+        android:text="Canada Water"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/northgreenwichButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/canarywharfButton"
+        app:layout_constraintTop_toBottomOf="@+id/londonbridgeButton" />
+
+    <Button
+        android:id="@+id/waterlooButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="18dp"
+        android:text="Waterloo"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/londonbridgeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/southwarkButton"
+        app:layout_constraintTop_toBottomOf="@+id/greenparkButton" />
+
+    <Button
+        android:id="@+id/londonbridgeButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="18dp"
+        android:text="London Bridge"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/canadawaterButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bermondseyButton"
+        app:layout_constraintTop_toBottomOf="@+id/waterlooButton" />
+
+    <Button
+        android:id="@+id/northgreenwichButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="19dp"
+        android:text="North Greenwich"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/westhamButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/canarywharfButton"
+        app:layout_constraintTop_toBottomOf="@+id/canadawaterButton" />
+
+    <Button
+        android:id="@+id/canningtownButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="14dp"
+        android:text="Canning Town"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/stratfordButton"
+        app:layout_constraintEnd_toStartOf="@+id/westhamButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/canarywharfButton" />
+
+    <Button
+        android:id="@+id/canarywharfButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="14dp"
+        android:text="Canary Wharf"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/canningtownButton"
+        app:layout_constraintEnd_toStartOf="@+id/northgreenwichButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bermondseyButton" />
+
+    <Button
+        android:id="@+id/bermondseyButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="21dp"
+        android:text="Bermondsey"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/canarywharfButton"
+        app:layout_constraintEnd_toStartOf="@+id/londonbridgeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/southwarkButton" />
+
+    <Button
+        android:id="@+id/southwarkButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="17dp"
+        android:text="Southwark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/bermondseyButton"
+        app:layout_constraintEnd_toStartOf="@+id/waterlooButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/westminsterButton" />
+
+    <Button
+        android:id="@+id/westminsterButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="18dp"
+        android:text="Westminster"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/southwarkButton"
+        app:layout_constraintEnd_toStartOf="@+id/greenparkButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bondstreetButton" />
+
+    <Button
+        android:id="@+id/bondstreetButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="17dp"
+        android:text="Bondstreet"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/westminsterButton"
+        app:layout_constraintEnd_toStartOf="@+id/bakerstreetButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stjohnswoodButton" />
+
+    <Button
+        android:id="@+id/stjohnswoodButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="17dp"
+        android:text="St Johns wood"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/bondstreetButton"
+        app:layout_constraintEnd_toStartOf="@+id/swisscottageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finchleyroadButton" />
+
+    <Button
+        android:id="@+id/finchleyroadButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="17dp"
+        android:text="Finchley Road"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/stjohnswoodButton"
+        app:layout_constraintEnd_toStartOf="@+id/westhampsteadButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kilsburnButton" />
+
+    <Button
+        android:id="@+id/kilsburnButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="13dp"
+        android:text="Kilsburn"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/finchleyroadButton"
+        app:layout_constraintEnd_toStartOf="@+id/willesdengreenButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dollishillButton" />
+
+    <Button
+        android:id="@+id/dollishillButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="17dp"
+        android:text="Dollis Hill"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/kilsburnButton"
+        app:layout_constraintEnd_toStartOf="@+id/neasdenButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wembleyparkButton" />
+
+    <Button
+        android:id="@+id/wembleyparkButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="21dp"
+        android:text="Wembley Park"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/dollishillButton"
+        app:layout_constraintEnd_toStartOf="@+id/kingsburyButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/queensburyButton" />
+
+    <Button
+        android:id="@+id/queensburyButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="17dp"
+        android:text="Queensbury"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/wembleyparkButton"
+        app:layout_constraintEnd_toStartOf="@+id/canonsparkButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stanmoreButton" />
+
+    <Button
+        android:id="@+id/stanmoreButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="13dp"
+        android:text="Stanmore"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/queensburyButton"
+        app:layout_constraintEnd_toStartOf="@+id/canonsparkButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
