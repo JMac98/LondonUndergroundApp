@@ -2,6 +2,7 @@ package com.example.londonundergroundapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.SpannableString;
@@ -12,10 +13,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
@@ -32,9 +36,17 @@ public class CanningTownActivity extends AppCompatActivity{
 
     private TextView textViewResult1;
     private TextView textViewResult2;
+    private int k;
+    private int q;
     private RequestQueue mQueue;
+    private String serverAddress = "http://192.168.0.23/Volley/Insert.php";
+    private AlertDialog.Builder builder;
     SpannableString spannableString1;
     SpannableString spannableString2;
+    private String platformName;
+    private String destinationName;
+    private String currentLocation;
+    private int timeToStation;
 
     private List<PlatformInfo> canningTownArrivals1 = new ArrayList<>();
     private List<PlatformInfo> canningTownArrivals2 = new ArrayList<>();
@@ -46,6 +58,8 @@ public class CanningTownActivity extends AppCompatActivity{
 
         textViewResult1 = findViewById(R.id.textView1);
         textViewResult2 = findViewById(R.id.textView2);
+
+        builder = new AlertDialog.Builder(CanningTownActivity.this);
 
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
@@ -61,8 +75,9 @@ public class CanningTownActivity extends AppCompatActivity{
 
     boolean mIsRequest = false;
 
+
     private void jsonParse(){
-        String url = "https://api.tfl.gov.uk/Line/jubilee/Arrivals/940GZZLUCGT?direction=all&app_id=461641d9&app_key=d25484e7ca02fe0985d5ac06c2923ad5"; //api can mess up so if it closes somethings wrong
+        String url = "https://api.tfl.gov.uk/Line/jubilee/Arrivals/940GZZLUCGT?direction=all&app_id=461641d9&app_key=d25484e7ca02fe0985d5ac06c2923ad5"; //API is offline at midnight; instantly closes application
 
         if(mIsRequest){
             return;
@@ -76,19 +91,19 @@ public class CanningTownActivity extends AppCompatActivity{
 
         mQueue = Volley.newRequestQueue(CanningTownActivity.this);
 
-        JsonArrayRequest request = new JsonArrayRequest(com.android.volley.Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest request = new JsonArrayRequest(Method.GET, url, null, new Response.Listener<JSONArray>() { //JSON Array
 
             @Override
             public void onResponse(JSONArray response) {
                 mIsRequest = false;
-                for(int i = 0; i < response.length();i++){
+                for(int i = 0; i < response.length();i++){ //parses through the JSON file (JSON array)
                     try {
                         JSONObject arrivals = response.getJSONObject(i);
 
-                        String platformName = arrivals.getString("platformName");
-                        String destinationName = arrivals.getString("destinationName");
-                        String currentLocation = arrivals.getString("currentLocation");
-                        int timeToStation = arrivals.getInt("timeToStation");
+                        platformName = arrivals.getString("platformName");
+                        destinationName = arrivals.getString("destinationName");
+                        currentLocation = arrivals.getString("currentLocation");
+                        timeToStation = arrivals.getInt("timeToStation");
 
                         if(platformName.contains("Eastbound")){
                             canningTownArrivals1.add(new PlatformInfo(platformName,destinationName,currentLocation,timeToStation));
@@ -96,7 +111,7 @@ public class CanningTownActivity extends AppCompatActivity{
                             canningTownArrivals2.add(new PlatformInfo(platformName,destinationName,currentLocation,timeToStation));
                         }
 
-                        Collections.sort(canningTownArrivals1, new Comparator<PlatformInfo>() {
+                        Collections.sort(canningTownArrivals1, new Comparator<PlatformInfo>() { //sort the arrivals in order of time
                             @Override
                             public int compare(PlatformInfo o1, PlatformInfo o2) {
                                 return Integer.compare(o1.timeToStation,o2.timeToStation);
@@ -110,14 +125,18 @@ public class CanningTownActivity extends AppCompatActivity{
                             }
                         });
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
 
-                for(int k = 0; k < 8;k++) {
-                    spannableString1 = new SpannableString("Destination: " + canningTownArrivals1.get(k).destinationName); //spannable string is in the scope of the for loop,
-                    spannableString1.setSpan(createClickableSpan(canningTownArrivals1.get(k).currentLocation),0,canningTownArrivals1.get(k).length() + 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            //Toast message for eastbound platform
+
+            // Need to use spannable string to display PlatformInfo
+
+                for(k = 0; k < 8;k++) {
+                    spannableString1 = new SpannableString("Destination: " + canningTownArrivals1.get(k).destinationName); //spannable string is in the scope of the for loop
+                    spannableString1.setSpan(createClickableSpanEastbound(canningTownArrivals1.get(k).currentLocation),0,canningTownArrivals1.get(k).length() + 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // display toast message
 
                     textViewResult1.append(spannableString1);
 
@@ -127,9 +146,11 @@ public class CanningTownActivity extends AppCompatActivity{
                     textViewResult1.setMovementMethod(LinkMovementMethod.getInstance());
                     }
 
-                for(int q = 0; q < canningTownArrivals2.size();q++) {
+                // Toast message for westbound platform
+
+                for(q = 0; q < canningTownArrivals2.size();q++) {
                     spannableString2 = new SpannableString("Destination: " + canningTownArrivals2.get(q).destinationName); //spannable string is in the scope of the for loop,
-                    spannableString2.setSpan(createClickableSpan(canningTownArrivals2.get(q).currentLocation),0,canningTownArrivals2.get(q).length() + 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    spannableString2.setSpan(createClickableSpanWestbound(canningTownArrivals2.get(q).currentLocation),0,canningTownArrivals2.get(q).length() + 13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     textViewResult2.append(spannableString2);
 
@@ -150,16 +171,52 @@ public class CanningTownActivity extends AppCompatActivity{
         mQueue.add(request);
     }
 
-    private ClickableSpan createClickableSpan(final String location){
+    private ClickableSpan createClickableSpanEastbound(final String location) {
         return new ClickableSpan() {
             @Override
             public void onClick(View view1) {
-                Toast.makeText(CanningTownActivity.this,"This train is " + location,Toast.LENGTH_LONG)
+                Toast.makeText(CanningTownActivity.this, "This train is " + location, Toast.LENGTH_LONG)
                         .show();
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, serverAddress, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }
+                        , new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
             }
+
         };
     }
 
+        private ClickableSpan createClickableSpanWestbound( final String location){
+            return new ClickableSpan() {
+                @Override
+                public void onClick(View view1) {
+                    Toast.makeText(CanningTownActivity.this, "This train is " + location, Toast.LENGTH_LONG)
+                            .show();
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, serverAddress, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                        }
+                    }
+                            , new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+                }
+
+            };
+
+        }
 }
 
 
