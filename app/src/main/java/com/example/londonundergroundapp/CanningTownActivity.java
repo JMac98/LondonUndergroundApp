@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -30,7 +31,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CanningTownActivity extends AppCompatActivity{
 
@@ -39,14 +42,10 @@ public class CanningTownActivity extends AppCompatActivity{
     private int k;
     private int q;
     private RequestQueue mQueue;
-    private String serverAddress = "http://192.168.0.23/Volley/Insert.php";
+    private String serverAddress = "http://192.168.0.23/Volley/insert.php";
     private AlertDialog.Builder builder;
     SpannableString spannableString1;
     SpannableString spannableString2;
-    private String platformName;
-    private String destinationName;
-    private String currentLocation;
-    private int timeToStation;
 
     private List<PlatformInfo> canningTownArrivals1 = new ArrayList<>();
     private List<PlatformInfo> canningTownArrivals2 = new ArrayList<>();
@@ -100,10 +99,10 @@ public class CanningTownActivity extends AppCompatActivity{
                     try {
                         JSONObject arrivals = response.getJSONObject(i);
 
-                        platformName = arrivals.getString("platformName");
-                        destinationName = arrivals.getString("destinationName");
-                        currentLocation = arrivals.getString("currentLocation");
-                        timeToStation = arrivals.getInt("timeToStation");
+                        String platformName = arrivals.getString("platformName");
+                        String destinationName = arrivals.getString("destinationName");
+                        String currentLocation = arrivals.getString("currentLocation");
+                        int timeToStation = arrivals.getInt("timeToStation");
 
                         if(platformName.contains("Eastbound")){
                             canningTownArrivals1.add(new PlatformInfo(platformName,destinationName,currentLocation,timeToStation));
@@ -175,49 +174,58 @@ public class CanningTownActivity extends AppCompatActivity{
         return new ClickableSpan() {
             @Override
             public void onClick(View view1) {
-                Toast.makeText(CanningTownActivity.this, "This train is " + location, Toast.LENGTH_LONG)
-                        .show();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, serverAddress, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                    }
-                }
-                        , new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
+                Toast.makeText(CanningTownActivity.this, "This train is " + location, Toast.LENGTH_LONG).show();
+//                savePerformanceEastbound();
             }
 
         };
     }
 
-        private ClickableSpan createClickableSpanWestbound( final String location){
-            return new ClickableSpan() {
-                @Override
-                public void onClick(View view1) {
-                    Toast.makeText(CanningTownActivity.this, "This train is " + location, Toast.LENGTH_LONG)
-                            .show();
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, serverAddress, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
+    private ClickableSpan createClickableSpanWestbound( final String location) {
+        return new ClickableSpan() {
+            @Override
+            public void onClick(View view1) {
+                Toast.makeText(CanningTownActivity.this, "This train is " + location, Toast.LENGTH_LONG).show();
+            }
+        };
+    }
 
-                        }
-                    }
-                            , new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
+//    private void savePerformanceEastbound(View v){
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, serverAddress, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getApplicationContext(), "error:" + error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("destinationname", canningTownArrivals1.get(k).destinationName);
+//                params.put("currentlocation", canningTownArrivals1.get(k).currentLocation);
+//                params.put("timetostation", Integer.toString(canningTownArrivals2.get(k).timeToStation));
+//                return params;
+//            }
+//        };
+//
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//        queue.add(stringRequest);
+//
+//
+//    }
 
-                        }
-                    });
-                }
-
-            };
-
-        }
 }
+
+
 
 
 
