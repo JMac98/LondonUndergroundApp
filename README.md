@@ -6,9 +6,9 @@ Android application which displays the live train arrivals of the London undergr
 * Displays current train positions of each train via toast messages
 
 ### Prerequisites 
-Android studio - https://developer.android.com/studio (Required to build the APK) 
+Android studio - https://developer.android.com/studio (Required to run the application and build an APK file) 
 
-To run the application on your Android phone, ensure the phone is running android 8+.
+To run the application on your Android phone, you'll need to build an APK file and install it on your chosen Android phone (Ensure the phone is running android 8+!).
 
 ## Built With
 * [TFL's REST API](https://api.tfl.gov.uk/) - TFL's REST API where data is retrieved from
