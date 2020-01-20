@@ -3,7 +3,7 @@ Android application which displays the live train arrivals of the London undergr
 
 # Description
 * Currently only implemented to display the live train arrivals at the Canning station of the Jubilee line.
-* Displays current train positions of each train
+* Displays current train positions of each train via toast messages
 
 ### Prerequisites 
 Android studio - https://developer.android.com/studio (Required to build the APK) 
